@@ -457,7 +457,7 @@ func! s:apply_icons() abort
     if exists('l:icon')
       if s:virttext_feat ==# 'extmark'
         let l:virt_text = type(icon) == type({}) ? [[icon.icon, icon.hl]] : [[icon, 'DirvishColumnHead']]
-        call nvim_buf_set_extmark(0, s:ns_id, i-1, 0, #{virt_text: l:virt_text, virt_text_pos: 'inline'})
+        call nvim_buf_set_extmark(0, s:ns_id, i-1, 0, #{virt_text: l:virt_text, virt_text_pos: 'inline', invalidate: v:true, end_row: i-1, end_col: 1})
       elseif s:virttext_feat ==# 'textprop'
         if type(icon) == type('')
           call prop_add(i, 1, #{type: s:prop_type, text: icon})
