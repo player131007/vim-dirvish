@@ -444,6 +444,9 @@ func! s:apply_icons() abort
 
   let i = 0
   for f in getline(1, '$')
+    if '' == f
+      continue
+    endif
     let i += 1
     for id in sort(keys(s:cb_map))
       let icon = s:cb_map[id](f)
